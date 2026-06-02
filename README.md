@@ -45,7 +45,7 @@ Dưới đây là tiến độ học tập thực tế theo lộ trình **Week 8
 | Ngày học | Chủ đề cốt lõi | Trạng thái thực hành | Chi tiết tiến trình |
 | :--- | :--- | :---: | :--- |
 | **Thứ 2 (01/06)** | Nền tảng IaC & AWS Provider | 🟢 Đã hoàn thành | Khởi chạy thành công máy chủ EC2 đầu tiên trên AWS (`ap-southeast-1`). Giải quyết lỗi AMI ID và lỗi tag cú pháp. |
-| **Thứ 3 (02/06)** | State Management & Secrets | 🟢 Đã hoàn thành | Tạo thành công Repo GitHub qua Terraform. Thiết lập file `secrets.tfvars` dùng chung an toàn. Tái cấu trúc cấu trúc Multi-Lab. |
+| **Thứ 3 (02/06)** | State Management & Secrets | 🟢 Đã hoàn thành | Tạo Repo GitHub qua Terraform. Thiết lập `secrets.tfvars` dùng chung an toàn. Tái cấu trúc Multi-Lab. Triển khai S3 & DynamoDB làm Remote State Backend & State Locking (gỡ lỗi DynamoDB Pay-Per-Request). |
 | **Thứ 4 (03/06)** | Nền tảng Kubernetes (K8s) | 🟡 Đang học | Đang nghiên cứu kiến trúc Kubernetes (Master/Worker node), viết cấu hình cho Pod và Service cơ bản. |
 | **Thứ 5 (04/06)** | K8s ConfigMap, Secret, Network | ⚪ Chưa bắt đầu | Học cách quản lý cấu hình tập trung và thiết lập chính sách kết nối mạng trong K8s. |
 | **Thứ 6 (05/06)** | Mini Project & Đánh giá tuần | ⚪ Chưa bắt đầu | Kết hợp Terraform + K8s để deploy một ứng dụng thực tế quy mô nhỏ. |
