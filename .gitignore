@@ -28,3 +28,6 @@ Thumbs.db
 **/secret.tfvars
 **/.env
 **/.envrc
+**/backend.hcl
+**/secrets.hcl
+**/*.auth.hcl

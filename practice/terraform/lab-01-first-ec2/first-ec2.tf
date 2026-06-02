@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket         = "mcuong-terraform-state"
+    key            = "w8/terraform.tfstate"
+    region         = "ap-southeast-1"
+    dynamodb_table = "StateLocking"
+    encrypt        = true
+  }
+}
 #variables
 variable "access_key" {
   type        = string
