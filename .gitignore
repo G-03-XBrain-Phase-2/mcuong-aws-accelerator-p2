@@ -1,0 +1,30 @@
+# OS-specific files (Hệ điều hành)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Terraform files (Cơ chế hoạt động & state)
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+**/crash.log.*
+
+# Override files (File cấu hình tạm thời)
+**/*_override.tf
+**/*_override.tf.json
+**/*_override_*.tf
+**/*_override_*.tf.json
+**/.terraformrc
+**/terraform.rc
+
+# Credentials & Variables (Key nhạy cảm & biến môi trường)
+**/*.tfvars
+**/*.tfvars.json
+**/secret.tfvars
+**/.env
+**/.envrc
