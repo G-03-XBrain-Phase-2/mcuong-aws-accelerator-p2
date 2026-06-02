@@ -16,7 +16,9 @@
 * Cấu hình và chạy thành công việc tự động **tạo Repository mới trên GitHub** (`cuong_repo`) sử dụng GitHub Provider thông qua Personal Access Token kết hợp nạp biến từ file dùng chung `secrets.tfvars` ở thư mục cha.
 * Cấu hình file `.gitignore` đệ quy thông minh bảo vệ toàn bộ các file state và key nhạy cảm của các lab con.
 * **Cấu hình & triển khai thành công Lab 03:** Thiết lập S3 Bucket (bật Versioning) và DynamoDB Table dùng làm **Remote State Backend & State Locking** dùng chung cho các dự án sau này.
+* **Di chuyển thành công Lab 01 (EC2 AWS) sang sử dụng Remote Backend:** Tích hợp S3 (`mcuong-terraform-state`) và DynamoDB (`StateLocking`) làm backend lưu trữ từ xa. Thực thi khởi chạy thành công EC2 Instance với state được tự động đồng bộ lên đám mây AWS.
 * **Đường dẫn thực hành:** 
+  * [lab-01-first-ec2/first-ec2.tf](file:///Users/enma/Downloads/Coding/Cloud_Engineer/Unitled/devops/practice/terraform/lab-01-first-ec2/first-ec2.tf)
   * [lab-02-github-repo/github-repo.tf](file:///Users/enma/Downloads/Coding/Cloud_Engineer/Unitled/devops/practice/terraform/lab-02-github-repo/github-repo.tf)
   * [lab-03-remote-locking-state/remote.tf](file:///Users/enma/Downloads/Coding/Cloud_Engineer/Unitled/devops/practice/terraform/lab-03-remote-locking-state/remote.tf)
   * [secrets.tfvars](file:///Users/enma/Downloads/Coding/Cloud_Engineer/Unitled/devops/practice/terraform/secrets.tfvars)
@@ -28,6 +30,10 @@
   * *Cách giải quyết:* Sửa lại chính xác thành `auto_init = true`.
 * **Lỗi khai báo thuộc tính DynamoDB khi dùng Pay-Per-Request:** Khai báo `billing_mode = "PAY_PER_REQUEST"` nhưng quên chưa xóa bỏ `read_capacity` và `write_capacity` dẫn đến lỗi `Invalid Attribute Combination`.
   * *Cách giải quyết:* Đã chủ động phát hiện nguyên nhân lỗi và loại bỏ hoàn toàn 2 thuộc tính dung lượng cố định đó để đưa DynamoDB về chế độ On-Demand chuẩn xác.
+* **Lỗi xác thực S3 Backend khi `init` (đa tài khoản):** S3 backend không hỗ trợ HCL variables, đồng thời AWS CLI bị cấu hình lỗi vùng mặc định (dán nhầm token), dẫn đến lỗi `403 Forbidden` khi init.
+  * *Cách giải quyết:* Viết file credentials riêng biệt `backend.hcl` và khởi động lại với cờ nạp động `-backend-config="../backend.hcl"` kết hợp cờ `-reconfigure` để bỏ qua toàn bộ cache lỗi cũ, khởi chạy thành công 100%.
+* **GitHub Push Protection chặn đẩy file `backend.hcl` chứa secrets:** Hệ thống quét phát hiện nguy cơ rò rỉ AWS credentials lên Git.
+  * *Cách giải quyết:* Đã thực hiện rollback nhanh commit, bổ sung các mẫu chặn `**/backend.hcl`, `**/secrets.hcl`, `**/*.auth.hcl` vào file cấu hình gốc `.gitignore` để đảm bảo an toàn tuyệt đối.
 
 ## 4. Tiến trình hiện tại
 - [ ] Chưa bắt đầu

@@ -29,6 +29,6 @@ resource "aws_instance" "myec2" {
   ami           = "ami-0543dbdaf4e114be7"
   instance_type = "t3.micro"
   tags = {
-    Name = "cuong-ec2"
+    Name = "cuong-ec3"
   }
 }
