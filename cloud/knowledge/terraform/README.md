@@ -26,6 +26,9 @@ Chào mừng bạn đến với thư viện kiến thức chuyên sâu về Terr
 *Cách áp dụng Terraform vào dự án thực tế quy mô lớn, an toàn và bảo mật.*
 * **Nội dung chính:** Cấu trúc thư mục lớn, Quản lý Secrets, Security Linting (tfsec, tflint), CI/CD Automation cho IaC.
 
+### [Chuyên đề Đặc Biệt: Ôn Thi Cấp Tốc - Lý Thuyết & Thực Hành Tự Luận](./06_exam_cheat_sheet.md)
+*Tóm tắt cô đọng toàn bộ kiến thức cốt lõi (IaC, Types, Variables, Meta-arguments, Lifecycle, Modules) phục vụ cho bài kiểm tra tự luận 60 phút.*
+
 ---
 
 ## 🎯 LỘ TRÌNH HỌC ƯU TIÊN (RÚT GỌN) ĐỂ HOÀN THÀNH AWS WEB APP PROJECT
