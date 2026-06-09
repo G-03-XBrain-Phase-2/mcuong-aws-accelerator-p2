@@ -2,6 +2,9 @@
 
 Chào mừng bạn đến với chuỗi bài lab Kubernetes (K8s) được thiết kế từ cơ bản đến nâng cao. Chuỗi lab này sẽ giúp bạn nắm vững các khái niệm cốt lõi của K8s và sẵn sàng cho bài Lab thực tế **"Mini K8s platform trên minikube"** (Lab 06).
 
+> [!NOTE]
+> Để hiểu cách các thành phần trong Kubernetes vận hành và tương tác với nhau, hãy đọc tài liệu **[Tổng Quan Kiến Trúc Kubernetes](file:///Users/enma/Downloads/Coding/Cloud_Engineer/Unitled/devops/cloud/knowledge/k8s/architecture_overview.md)** trước khi bắt đầu thực hành.
+
 ---
 
 ## 📋 Danh sách bài Lab

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-deploy
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: hashicorp-http-echo
+        image: hashicorp/http-echo:0.2.3
+        args:
+        - "-text=Welcome to the K8s Networking Lab!"
+        ports:
+        - containerPort: 5678

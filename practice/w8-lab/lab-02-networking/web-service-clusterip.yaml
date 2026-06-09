@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: web-app
+  ports:
+  - port: 80         # Cổng Service lắng nghe bên trong Cluster
+    targetPort: 5678 # Cổng của Container đang chạy ứng dụng
