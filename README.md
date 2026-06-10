@@ -1,69 +1,56 @@
-# 🚀 Nhật Ký Thực Hành & Tiến Độ Học Tập (Practice Hub)
+# 🚀 Nhật Ký Thực Hành & Tiến Độ Học Tập của em
 
-Chào mừng Mentor đến với không gian thực hành các bài Lab DevOps của em. Thư mục này được tổ chức một cách ngăn nắp, bảo mật và dễ theo dõi nhất để Mentor tiện đánh giá tiến độ hàng ngày.
+Chào mừng Mentor đến với không gian lưu trữ các bài lab và tiến độ học tập Phase 2 của em. Thư mục này được tổ chức ngăn nắp để Mentor dễ kiểm tra và đánh giá hàng ngày.
 
 ---
 
 ## 📂 1. Cấu Trúc Thư Mục Thực Hành (`practice/`)
 
-Để tránh việc Terraform gộp chung các bài học gây xung đột tài nguyên, em đã tổ chức không gian thực hành thành cấu trúc **Multi-Lab (Nhiều bài lab độc lập)** kết hợp quản lý biến tập trung:
+Em chia các bài lab thực hành thành từng chủ đề riêng biệt để tránh xung đột tài nguyên:
 
 ```
 practice/
-│
-├── README.md                      <-- File này (Tổng quan & Tiến độ tổng quát)
-│
-└── terraform/                     <-- Phân vùng thực hành Terraform
-    │
-    ├── .gitignore                 <-- Quy tắc chặn đệ quy (loại bỏ thư mục nặng .terraform/ và *.tfstate nhạy cảm)
-    ├── secrets.tfvars             <-- File chứa Key/Token dùng chung (được .gitignore bảo vệ tuyệt đối)
-    │
-    ├── notes/                     <-- Ghi chú kiến thức cốt lõi & Sổ tay gỡ lỗi
-    │   ├── terraform_state_guide.md
-    │   └── managing_sensitive_variables.md
-    │
-    ├── lab-01-first-ec2/          <-- Lab 01: Triển khai EC2 instance đầu tiên trên AWS
-    │   ├── first-ec2.tf
-    │   └── ...
-    │
-    └── lab-02-github-repo/        <-- Lab 02: Triển khai tạo tự động GitHub Repository
-        ├── github-repo.tf
-        └── ...
+├── terraform/                     <-- Các bài lab Terraform (Tuần 8)
+│   ├── secrets.tfvars             <-- Lưu API key/credentials dùng chung (đã ẩn bằng .gitignore)
+│   ├── lab-01-first-ec2/          
+│   ├── lab-02-github-repo/        
+│   └── ...
+└── gitops-cicd/                   <-- Các bài lab GitOps & CI/CD (Tuần 9)
+    ├── lab-01-gha-terraform/      <-- Lab tự động Plan on PR & Apply on Merge
+    ├── lab-02-argocd-sync-waves/  <-- Lab quản lý thứ tự chạy (Sync Waves)
+    └── lab-03-argocd-app-of-apps-rollback/ <-- Lab mô hình App of Apps & Test Revert
 ```
 
-### 💡 Các điểm sáng trong thiết kế cấu trúc:
-1. **Quản lý Secrets tập trung:** Sử dụng file `secrets.tfvars` ở thư mục gốc `practice/terraform/` để lưu trữ tất cả Credentials (AWS keys, GitHub token). Các file code trong lab con chỉ cần khai báo biến và trỏ đường dẫn ra ngoài (`../secrets.tfvars`), giúp code sạch sẽ và an toàn.
-2. **Quy tắc bảo mật tốt:** Đã triển khai `.gitignore` đệ quy để đảm bảo không bao giờ vô tình đẩy file state (`.tfstate`) hay thông tin tài khoản lên GitHub.
-3. **Phân tách môi trường độc lập:** Mỗi Lab con sở hữu một file cấu hình và vòng đời hạ tầng hoàn toàn riêng biệt.
+*   **Bảo mật:** Em đã cấu hình `.gitignore` đệ quy để tự động chặn các file nhạy cảm như `*.tfstate`, `secrets.tfvars` hay thư mục cấu hình `.terraform/` không bị đẩy lên GitHub.
 
 ---
 
-## 🎯 2. Bảng Theo Dõi Tiến Độ Tổng Quát (Week 8)
+## 🎯 2. Bảng Theo Dõi Tiến Độ Học Tập
 
-Dưới đây là tiến độ học tập thực tế theo lộ trình **Week 8 — Foundation: IaC (Terraform) + Kubernetes (K8s)**:
+### 📅 Tuần 8 — Foundation: IaC (Terraform) + Kubernetes (K8s) (Đã hoàn thành)
+*   **Thứ 2 (01/06) & Thứ 3 (02/06):** Khởi chạy EC2 trên AWS, tìm hiểu State Management và Remote State locking (S3 + DynamoDB).
+*   **Thứ 4 (03/06) & Thứ 5 (04/06):** Học nền tảng Kubernetes, triển khai thử Pod/Service trên Minikube local.
+*   **Thứ 6 (05/06):** Hoàn thành bài Lab tổng hợp mini dự án trên K8s.
 
-| Ngày học | Chủ đề cốt lõi | Trạng thái thực hành | Chi tiết tiến trình |
+### 📅 Tuần 9 — Deliver Smartly: GitOps + Observability + Canary (Đang học)
+
+| Ngày học | Chủ đề cốt lõi | Trạng thái | Chi tiết tiến trình của em |
 | :--- | :--- | :---: | :--- |
-| **Thứ 2 (01/06)** | Nền tảng IaC & AWS Provider | 🟢 Đã hoàn thành | Khởi chạy thành công máy chủ EC2 đầu tiên trên AWS (`ap-southeast-1`). Giải quyết lỗi AMI ID và lỗi tag cú pháp. |
-| **Thứ 3 (02/06)** | State Management & Secrets | 🟢 Đã hoàn thành | Tạo Repo GitHub qua Terraform. Thiết lập `secrets.tfvars` dùng chung an toàn. Tái cấu trúc Multi-Lab. Triển khai S3 & DynamoDB làm Remote State Backend & State Locking (gỡ lỗi DynamoDB Pay-Per-Request). |
-| **Thứ 4 (03/06)** | Nền tảng Kubernetes (K8s) | 🟡 Đang học | Đang nghiên cứu kiến trúc Kubernetes (Master/Worker node), viết cấu hình cho Pod và Service cơ bản. |
-| **Thứ 5 (04/06)** | K8s ConfigMap, Secret, Network | ⚪ Chưa bắt đầu | Học cách quản lý cấu hình tập trung và thiết lập chính sách kết nối mạng trong K8s. |
-| **Thứ 6 (05/06)** | Mini Project & Đánh giá tuần | ⚪ Chưa bắt đầu | Kết hợp Terraform + K8s để deploy một ứng dụng thực tế quy mô nhỏ. |
+| **Thứ 2 (08/06)** | GitOps & CI/CD | 🟢 Đã xong | Tự cài đặt thành công Argo CD lên Minikube local, thiết lập workflow tự động Plan-on-PR và Apply-on-Merge, thực hành mô hình App-of-Apps và Rollback chuẩn GitOps (`git revert`). |
+| **Thứ 3 (09/06)** | Observability — SLO/SLI/OTel | 🟡 Đang học | Đang tìm hiểu cách tích hợp Prometheus, Grafana, Loki và cấu hình Alert manager dựa trên burn rate. |
+| **Thứ 4 (10/06)** | Progressive Delivery (Canary) | 🟡 Đang học | Bắt đầu đọc tài liệu về Argo Rollouts, AnalysisTemplate để triển khai chiến lược Canary Release. |
+| **Thứ 5 (11/06) & Thứ 6 (12/06)** | Onsite Đà Nẵng & Lab tổng hợp | ⚪ Chưa | Sẽ tiến hành GitOps hóa cụm K8s từ W8, tích hợp thêm phần monitoring và canary release tự động abort. |
 
 ---
 
-## 🛠️ 3. Quy Trình Chạy Thử Code Cho Mentor
+## 🛠️ 3. Cách Chạy Thử Code Cho Mentor
 
-Để chạy thử bất kỳ bài thực hành nào trong không gian này:
-1. Mở Terminal và di chuyển vào thư mục lab tương ứng:
+Để chạy thử một bài lab bất kỳ (ví dụ bài lab 2 của GitOps):
+1. Di chuyển vào thư mục bài lab:
    ```bash
-   cd practice/terraform/lab-02-github-repo
+   cd practice/gitops-cicd/lab-02-argocd-sync-waves
    ```
-2. Khởi tạo môi trường:
+2. Thực hiện apply các manifest K8s vào cụm local:
    ```bash
-   terraform init
-   ```
-3. Xem trước kế hoạch (Mentor cần tạo file `secrets.tfvars` của riêng mình ở thư mục cha theo mẫu trong ghi chú):
-   ```bash
-   terraform plan -var-file="../secrets.tfvars"
+   kubectl apply -f manifests/
    ```

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - name: database
+        image: alpine
+        command: ["sh", "-c", "echo 'Database starting...'; sleep 10; echo 'Database is ready!'; while true; do sleep 3600; done"]
+        ports:
+        - containerPort: 5432
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "pgrep alpine"
+          initialDelaySeconds: 2
+          periodSeconds: 5
